@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class AmenityService {
+public class AdminAmenityService {
     private final AmenityRepository amenityRepository;
 
     @Transactional

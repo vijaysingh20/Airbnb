@@ -17,7 +17,6 @@ public class Service {
     @GeneratedValue
     private UUID id;
 
+    @Column(unique = true, nullable = false)
     private String name;
-    private Double price;
-    private Boolean perDay;
 }

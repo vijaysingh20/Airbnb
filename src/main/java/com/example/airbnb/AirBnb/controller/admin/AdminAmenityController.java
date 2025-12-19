@@ -2,7 +2,7 @@ package com.example.airbnb.AirBnb.controller.admin;
 
 import com.example.airbnb.AirBnb.dto.AdminDto.CreateAmenityDto;
 import com.example.airbnb.AirBnb.dto.ResponseDto.AmenityResponse;
-import com.example.airbnb.AirBnb.service.admin.AmenityService;
+import com.example.airbnb.AirBnb.service.admin.AdminAmenityService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,13 +18,13 @@ import java.util.List;
 @RequestMapping("/api/admin/amenities")
 @PreAuthorize("hasRole('ADMIN')")
 @Tag(name = "Amenities", description = "Amenities Api's")
-public class AmenitiesController {
-    private final AmenityService amenityService;
+public class AdminAmenityController {
+    private final AdminAmenityService adminAmenityService;
 
     @PostMapping("/create")
     public List<AmenityResponse> createAmenity(
             @RequestBody CreateAmenityDto amenityDto
     ) {
-        return amenityService.createAmenity(amenityDto);
+        return adminAmenityService.createAmenity(amenityDto);
     }
 }

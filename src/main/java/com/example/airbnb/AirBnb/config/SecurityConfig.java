@@ -33,6 +33,9 @@ public class SecurityConfig {
                                 "/api/auth/verify-otp"
                         ).permitAll()
                         .requestMatchers("/api/admin/amenities/**").hasRole("ADMIN")
+                        .requestMatchers("/api/admin/services/**").hasRole("ADMIN")
+                        .requestMatchers("/api/services/**").authenticated()
+                        .requestMatchers("/api/amenities/**").authenticated()
                         .requestMatchers("/api/users/**").authenticated()
                         .anyRequest().authenticated()
                 )
