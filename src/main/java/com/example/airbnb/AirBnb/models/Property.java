@@ -1,6 +1,7 @@
 package com.example.airbnb.AirBnb.models;
 
 import com.example.airbnb.AirBnb.enums.ListingType;
+import com.example.airbnb.AirBnb.enums.PropertyStatus;
 import com.example.airbnb.AirBnb.enums.PropertyType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "properties")
@@ -18,8 +20,8 @@ import java.util.Set;
 @Builder
 public class Property {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "host_id", nullable = false)
@@ -64,6 +66,9 @@ public class Property {
     private Set<Service> services;
 
     private Boolean isActive;
+
+    @Enumerated(EnumType.STRING)
+    private PropertyStatus status;
 
     @CreationTimestamp
     private LocalDateTime createdAt;

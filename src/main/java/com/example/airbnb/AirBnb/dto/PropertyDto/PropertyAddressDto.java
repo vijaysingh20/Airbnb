@@ -1,31 +1,18 @@
-package com.example.airbnb.AirBnb.models;
+package com.example.airbnb.AirBnb.dto.PropertyDto;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-import java.util.UUID;
-
-@Entity
-@Table(name = "property_address")
 @Getter
-@Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class PropertyAddress {
-    @Id
-    @GeneratedValue
-    private UUID id;
-
+public class PropertyAddressDto {
     private String country;
     private String state;
     private String city;
     private String locality;
     private String pincode;
-
     private String street;
     private String landmark;
-
     private Double latitude;
     private Double longitude;
 }

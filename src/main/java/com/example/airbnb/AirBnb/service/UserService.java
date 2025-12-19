@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -17,7 +18,7 @@ public class UserService {
     private final JwtService jwtService;
 
     @Transactional
-    public void completeProfile(Long userId, String firstName, String lastName, String email, String phone) {
+    public void completeProfile(UUID userId, String firstName, String lastName, String email, String phone) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
@@ -33,12 +34,12 @@ public class UserService {
         userRepository.save(user);
     }
 
-    public User getUserById(Long userId) {
+    public User getUserById(UUID userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    public void becomeHost(Long userId) {
+    public void becomeHost(UUID userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 

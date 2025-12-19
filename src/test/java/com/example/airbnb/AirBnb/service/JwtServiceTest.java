@@ -6,6 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Map;
+import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,9 +39,9 @@ public class JwtServiceTest {
         System.out.println("token" + token);
 
         String role = jwtService.extractClaim(token, c -> c.get("role", String.class));
-        Long userId = jwtService.extractClaim(token, c -> c.get("userId", Long.class));
+        UUID userId = jwtService.extractClaim(token, c -> c.get("userId", UUID.class));
 
         assertThat(role).isEqualTo("USER");
-        assertThat(userId).isEqualTo(1L);
+        assertThat(userId).isEqualTo(UUID.fromString("a7c3f891-2d4e-4b3a-9f7c-8e5d6a1b2c3d"));
     }
 }

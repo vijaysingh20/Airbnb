@@ -6,11 +6,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
 public class UserPrincipal implements UserDetails {
-    private final Long userId;
+    private final UUID userId;
     private final String phone;
     private final String email;
     private final Collection<? extends GrantedAuthority> authorities;
